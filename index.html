@@ -1,0 +1,42 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['user'])) {
+    header('Location: profile.php');
+}
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/ajax.js"></script>
+    <script src="assets/js/main.js"></script>
+</head>
+
+<body>
+    <!-- Форма авторизации -->
+    <form>
+        <label id="login-label" class="label">Логин</label>
+        <input id="login" type="text" placeholder="Введите свой логин">
+        <label id="login-error" class="error"></label>
+
+        <label id="password-label" class="label">Пароль</label>
+        <input id="password" type="password" placeholder="Введите пароль">
+        <label id="password-error" class="error"></label>
+        
+        <button type="button" class="login-btn" onclick="requestHandler.sendRequest()">Вход</button>
+        <p>
+            У вас нет аккаунта? - <a href="/register.php">зарегистрируйтесь</a>!
+        </p>
+    </form>
+    <script language="JavaScript">
+        requestHandler = new loginRequestHandler
+    </script>
+</body>
+
+</html>
